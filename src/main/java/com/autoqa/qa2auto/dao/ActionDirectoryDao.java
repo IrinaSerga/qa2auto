@@ -1,4 +1,4 @@
-package qa2auto.dao;
+package com.autoqa.qa2auto.dao;
 
 public interface ActionDirectoryDao {
 }

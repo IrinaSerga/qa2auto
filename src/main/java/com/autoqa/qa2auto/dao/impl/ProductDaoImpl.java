@@ -1,9 +1,9 @@
-package qa2auto.dao.impl;
+package com.autoqa.qa2auto.dao.impl;
 
-import qa2auto.dao.ProductDao;
-import qa2auto.entity.ProductEntity;
-import qa2auto.exception.ProductDaoException;
-import qa2auto.util.ConnectionManager;
+import com.autoqa.qa2auto.dao.ProductDao;
+import com.autoqa.qa2auto.entity.ProductEntity;
+import com.autoqa.qa2auto.exception.ProductDaoException;
+import com.autoqa.qa2auto.util.ConnectionManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -72,7 +72,7 @@ public class ProductDaoImpl implements ProductDao {
             }
             return Optional.ofNullable(product);
         } catch (SQLException e) {
-            throw new ProductDaoException(e);
+            throw new ProductDaoException("Can`t find product by id ", e);
         }
 
     }
@@ -88,8 +88,7 @@ public class ProductDaoImpl implements ProductDao {
             }
             return products;
         } catch (SQLException e) {
-            System.out.println("Can`t find all products" + e.getMessage());
-            throw new ProductDaoException(e);
+            throw new ProductDaoException("Can`t find all products ", e);
         }
 
     }
@@ -103,8 +102,7 @@ public class ProductDaoImpl implements ProductDao {
                     .name(resultSet.getString(NAME))
                     .build();
         } catch (SQLException e) {
-            System.out.println("Can`t build product" + e.getMessage());
-            throw new ProductDaoException(e);
+            throw new ProductDaoException("Can`t build product ", e);
         }
     }
 
@@ -121,8 +119,8 @@ public class ProductDaoImpl implements ProductDao {
             }
             return product;
 
-        } catch (SQLException throwables) {
-            throw new ProductDaoException(throwables);
+        } catch (SQLException e) {
+            throw new ProductDaoException("Can`t save product ", e);
         }
     }
 
@@ -135,8 +133,8 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.setLong(3, product.getId());
 
             preparedStatement.executeUpdate();
-        } catch (SQLException throwables) {
-            throw new ProductDaoException(throwables);
+        } catch (SQLException e) {
+            throw new ProductDaoException("Can`t update product ", e);
         }
         return product;
     }
@@ -153,8 +151,8 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.setInt(1, id);
             return preparedStatement.executeUpdate() == 1;
 
-        } catch (SQLException throwables) {
-            throw new ProductDaoException(throwables);
+        } catch (SQLException e) {
+            throw new ProductDaoException("Can`t delete product by id ", e);
         }
     }
 

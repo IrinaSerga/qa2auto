@@ -1,4 +1,4 @@
-package qa2auto.entity;
+package com.autoqa.qa2auto.entity;
 
 import lombok.*;
 

@@ -1,4 +1,4 @@
-package qa2auto.util;
+package com.autoqa.qa2auto.util;
 
 import java.io.IOException;
 import java.util.Properties;

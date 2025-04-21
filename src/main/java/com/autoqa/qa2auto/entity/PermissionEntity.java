@@ -1,4 +1,4 @@
-package qa2auto.entity;
+package com.autoqa.qa2auto.entity;
 
 import lombok.*;
 
@@ -9,9 +9,7 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 @Builder
-public class ActionDirectoryEntity {
-
+public class PermissionEntity {
     private int id;
     private String name;
-    private String description;
 }

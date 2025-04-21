@@ -1,4 +1,4 @@
-package qa2auto.service;
+package com.autoqa.qa2auto.service;
 
 public interface ProductService {
 }

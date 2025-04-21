@@ -1,4 +1,4 @@
-package qa2auto;
+package com.autoqa.qa2auto;
 
 import com.autoqa.qa2auto.util.ConnectionManager;
 

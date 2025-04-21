@@ -1,4 +1,4 @@
-package qa2auto.util;
+package com.autoqa.qa2auto.util;
 
 import java.lang.reflect.Proxy;
 import java.sql.Connection;

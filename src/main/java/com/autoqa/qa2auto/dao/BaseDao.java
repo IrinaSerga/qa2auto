@@ -1,4 +1,4 @@
-package qa2auto.dao;
+package com.autoqa.qa2auto.dao;
 
 import java.util.List;
 import java.util.Optional;
