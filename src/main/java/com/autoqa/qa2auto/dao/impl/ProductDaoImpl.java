@@ -47,7 +47,7 @@ public class ProductDaoImpl implements ProductDao {
             """;
 
 
-    public ProductDaoImpl() {
+    private ProductDaoImpl() {
         super();
     }
 

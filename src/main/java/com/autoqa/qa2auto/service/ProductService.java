@@ -1,4 +1,7 @@
 package com.autoqa.qa2auto.service;
 
-public interface ProductService {
+import com.autoqa.qa2auto.entity.ProductEntity;
+
+public interface ProductService  extends BaseService<Integer, ProductEntity>{
+
 }
