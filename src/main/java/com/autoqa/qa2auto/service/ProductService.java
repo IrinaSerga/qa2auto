@@ -1,7 +1,10 @@
 package com.autoqa.qa2auto.service;
 
-import com.autoqa.qa2auto.entity.ProductEntity;
+import com.autoqa.qa2auto.dto.ProductDto;
 
-public interface ProductService  extends BaseService<Integer, ProductEntity>{
+import java.util.List;
 
+public interface ProductService {
+    ProductDto findById(Integer id);
+    List<ProductDto> findAll();
 }
