@@ -31,5 +31,6 @@ public class ProductServletNew extends HttpServlet  {
             out.write("</ul>");
             out.write("</body></html>");
         }
+        System.out.println("Servlet is working!");
     }
 }
