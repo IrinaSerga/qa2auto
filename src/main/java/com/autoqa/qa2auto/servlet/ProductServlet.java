@@ -17,9 +17,9 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-            resp.setContentType("text/html");
-            try (PrintWriter out = resp.getWriter()) {
-                out.write("Hello from first servlet");
-            }
+        resp.setContentType("text/html");
+        try (PrintWriter out = resp.getWriter()) {
+            out.write("Hello from first servlet");
         }
+    }
 }
