@@ -19,6 +19,7 @@
         <postgresql.version>42.7.3</postgresql.version>
         <lombok.version>1.18.30</lombok.version>
         <servlet-api.version>6.1.0</servlet-api.version>
+        <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -72,7 +73,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.4.0</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
