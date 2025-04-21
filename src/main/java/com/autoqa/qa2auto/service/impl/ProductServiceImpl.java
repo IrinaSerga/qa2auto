@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class ProductServiceImpl implements ProductService {
-
+    private static ProductServiceImpl instance;
     private final ProductDao productDao;
 
-    public ProductServiceImpl() {
+    private ProductServiceImpl() {
         this.productDao = ProductDaoImpl.getInstance();
     }
 
@@ -52,4 +52,12 @@ public class ProductServiceImpl implements ProductService {
         }
         return productDao.deleteById(id);
     }
+
+    public static synchronized ProductService getInstance() {
+        if (instance == null) {
+            instance = new ProductServiceImpl();
+        }
+        return instance;
+    }
+
 }

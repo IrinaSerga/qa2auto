@@ -13,9 +13,9 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/product")
-public class ProductServletNew extends HttpServlet {
+public class ProductServletNew extends HttpServlet  {
 
-    private final ProductService productService = new ProductServiceImpl();
+    private final ProductService productService = ProductServiceImpl.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
