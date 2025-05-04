@@ -139,10 +139,6 @@ public class ProductDaoImpl implements ProductDao {
         return product;
     }
 
-    @Override
-    public void delete(ProductEntity entity) {
-
-    }
 
     @Override
     public boolean deleteById(Integer id) {

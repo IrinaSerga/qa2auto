@@ -18,8 +18,11 @@
         <junit.version>5.10.0</junit.version>
         <postgresql.version>42.7.3</postgresql.version>
         <lombok.version>1.18.30</lombok.version>
-        <servlet-api.version>6.1.0</servlet-api.version>
+        <servlet-api.version>6.0.0</servlet-api.version>
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <servlet-jsp-jstl.version>3.0.1</servlet-jsp-jstl.version>
+        <servlet-jsp-jstl-api.version>3.0.0</servlet-jsp-jstl-api.version>
     </properties>
 
     <dependencyManagement>
@@ -66,15 +69,26 @@
             <version>${servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- glassfish 3.0.1 -->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>${servlet-jsp-jstl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${servlet-jsp-jstl-api.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Lombok annotation processor -->
+            <!-- Плагин компилятора для настройки процессоров аннотаций -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
@@ -84,6 +98,13 @@
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+
+            <!-- Плагин для сборки WAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
             </plugin>
         </plugins>
     </build>

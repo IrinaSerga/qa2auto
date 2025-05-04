@@ -3,6 +3,7 @@ package com.autoqa.qa2auto.servlet;
 import com.autoqa.qa2auto.dto.ProductDto;
 import com.autoqa.qa2auto.service.ProductService;
 import com.autoqa.qa2auto.service.impl.ProductServiceImpl;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -32,6 +33,16 @@ public class ProductServlet extends HttpServlet {
             out.println("</body></html>");
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        var parameterMap = req.getParameterMap();
+//        System.out.println(parameterMap);
+        try (var reader = req.getReader();
+             var lines = reader.lines()) {
+          lines.forEach(System.out::println);
         }
     }
 }

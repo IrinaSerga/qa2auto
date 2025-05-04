@@ -6,8 +6,7 @@ import lombok.Value;
 
 @Value
 @Builder
-public class ProductDto {
-    Long id;
-    String code;
+public class TestGroupDto {
+    Integer id;
     String name;
 }
