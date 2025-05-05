@@ -5,10 +5,13 @@ import com.autoqa.qa2auto.service.impl.SubsystemServiceImpl;
 import com.autoqa.qa2auto.util.JspHelper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet("/subsystems")
 public class SubsystemServlet extends HttpServlet {
@@ -17,7 +20,18 @@ public class SubsystemServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String idParam = req.getParameter("id");
+        List<SubsystemDto> subsystems = subsystemService.findAll();
+        req.setAttribute("subsystems", subsystems);
+        req.getSession().setAttribute("subsystemsMap", subsystems.stream()
+                .collect(Collectors.toMap(SubsystemDto::getId, SubsystemDto::getName)));
+        req.getRequestDispatcher(JspHelper.getPath("subsystemList"))
+                .forward(req, resp);
+
+    }
+}
+
+
+      /*  String idParam = req.getParameter("id");
 
         if (idParam != null) {
             try {
@@ -36,9 +50,5 @@ public class SubsystemServlet extends HttpServlet {
             req.setAttribute("subsystems", subsystems);
             req.getRequestDispatcher(JspHelper.getPath("subsystemList"))
                     .forward(req, resp);
-        }
-    }
-}
-
-
+        }*/
 
