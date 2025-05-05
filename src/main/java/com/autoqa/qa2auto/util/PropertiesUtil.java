@@ -23,7 +23,7 @@ public final class PropertiesUtil {
         }
     }
 
-
-    public PropertiesUtil() {
+    // чтобы нельзя было создать объект класса
+    private PropertiesUtil() {
     }
 }

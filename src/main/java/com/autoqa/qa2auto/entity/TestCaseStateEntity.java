@@ -9,7 +9,7 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 @Builder
-public class PermissionEntity {
+public class TestCaseStateEntity {
     private Integer id;
     private String name;
 }

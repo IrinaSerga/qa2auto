@@ -12,10 +12,10 @@ import lombok.*;
 public class TestCaseEntity {
 
     private Long id;
-    private Integer subsystemId;
+    private SubsystemEntity subsystemId;
     private String name;
     private Short stateId;
-    private PriorityEntity priorityId;
+    private TestCasePriorityEntity priorityId;
     private String description;
 
 }

@@ -1,4 +1,6 @@
 package com.autoqa.qa2auto.dao;
 
-public interface PermissionDao {
+import com.autoqa.qa2auto.entity.PermissionEntity;
+
+public interface PermissionDao  extends BaseDao<Integer, PermissionEntity>{
 }

@@ -8,7 +8,6 @@ public interface BaseDao <K, E>{
      List<E> findAll();
      E save(E entity);
      E update(E entity);
-     void delete(E entity);
      boolean deleteById(K id);
 
 

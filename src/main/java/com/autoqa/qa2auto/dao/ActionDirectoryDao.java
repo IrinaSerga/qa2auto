@@ -1,4 +1,6 @@
 package com.autoqa.qa2auto.dao;
 
-public interface ActionDirectoryDao {
+import com.autoqa.qa2auto.entity.ActionDirectoryEntity;
+
+public interface ActionDirectoryDao  extends BaseDao<Integer, ActionDirectoryEntity>{
 }
