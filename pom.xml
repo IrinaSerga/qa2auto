@@ -80,6 +80,7 @@
             <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
             <version>${servlet-jsp-jstl-api.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>

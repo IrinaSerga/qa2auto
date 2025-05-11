@@ -2,8 +2,8 @@ package com.autoqa.qa2auto.dao.impl;
 
 import com.autoqa.qa2auto.dao.ActionDirectoryDao;
 import com.autoqa.qa2auto.entity.ActionDirectoryEntity;
-import com.autoqa.qa2auto.exception.ActionDirectoryDaoException;
-import com.autoqa.qa2auto.exception.TestCasePriorityDaoException;
+import com.autoqa.qa2auto.exception.daoException.ActionDirectoryDaoException;
+import com.autoqa.qa2auto.exception.daoException.TestCasePriorityDaoException;
 import com.autoqa.qa2auto.util.ConnectionManager;
 
 import java.sql.ResultSet;

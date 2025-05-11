@@ -2,7 +2,7 @@ package com.autoqa.qa2auto.dao.impl;
 
 import com.autoqa.qa2auto.dao.TestCasePriorityDao;
 import com.autoqa.qa2auto.entity.TestCasePriorityEntity;
-import com.autoqa.qa2auto.exception.TestCasePriorityDaoException;
+import com.autoqa.qa2auto.exception.daoException.TestCasePriorityDaoException;
 import com.autoqa.qa2auto.util.ConnectionManager;
 
 import java.sql.ResultSet;

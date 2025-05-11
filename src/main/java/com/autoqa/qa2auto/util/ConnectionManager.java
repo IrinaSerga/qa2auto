@@ -18,7 +18,6 @@ public class ConnectionManager {
     private static final String USERNAME_KEY = "db.username";
     private static final String PASSWORD_KEY = "db.password";
     private static final String POOL_SIZE_KEY = "db.pool.size";
-    public static final String DRIVER_KEY = "db.driver";
     private static final Integer DEFAULT_POOL_SIZE = 10;
     private static BlockingQueue<Connection> pool;
     private static List<Connection> sourceConnections;

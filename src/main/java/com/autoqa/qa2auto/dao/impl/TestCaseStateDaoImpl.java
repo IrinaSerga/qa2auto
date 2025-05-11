@@ -2,7 +2,7 @@ package com.autoqa.qa2auto.dao.impl;
 
 import com.autoqa.qa2auto.dao.TestCaseStateDao;
 import com.autoqa.qa2auto.entity.TestCaseStateEntity;
-import com.autoqa.qa2auto.exception.TestCaseStateDaoException;
+import com.autoqa.qa2auto.exception.daoException.TestCaseStateDaoException;
 import com.autoqa.qa2auto.util.ConnectionManager;
 
 import java.sql.ResultSet;

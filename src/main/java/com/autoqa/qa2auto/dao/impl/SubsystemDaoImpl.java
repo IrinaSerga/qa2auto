@@ -4,7 +4,7 @@ import com.autoqa.qa2auto.dao.SubsystemDao;
 import com.autoqa.qa2auto.entity.ProductEntity;
 import com.autoqa.qa2auto.entity.SubsystemEntity;
 import com.autoqa.qa2auto.entity.TestGroupEntity;
-import com.autoqa.qa2auto.exception.SubsystemDaoException;
+import com.autoqa.qa2auto.exception.daoException.SubsystemDaoException;
 import com.autoqa.qa2auto.util.ConnectionManager;
 
 import java.sql.ResultSet;

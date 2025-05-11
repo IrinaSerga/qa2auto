@@ -1,4 +1,4 @@
-package com.autoqa.qa2auto.exception;
+package com.autoqa.qa2auto.exception.daoException;
 
 public class ActionDirectoryDaoException extends DaoException{
     public ActionDirectoryDaoException(Throwable throwable) {
