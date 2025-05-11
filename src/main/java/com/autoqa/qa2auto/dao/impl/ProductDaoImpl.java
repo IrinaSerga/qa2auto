@@ -2,7 +2,7 @@ package com.autoqa.qa2auto.dao.impl;
 
 import com.autoqa.qa2auto.dao.ProductDao;
 import com.autoqa.qa2auto.entity.ProductEntity;
-import com.autoqa.qa2auto.exception.ProductDaoException;
+import com.autoqa.qa2auto.exception.daoException.ProductDaoException;
 import com.autoqa.qa2auto.util.ConnectionManager;
 
 import java.sql.ResultSet;
@@ -47,7 +47,7 @@ public class ProductDaoImpl implements ProductDao {
             """;
 
 
-    public ProductDaoImpl() {
+    private ProductDaoImpl() {
         super();
     }
 
@@ -139,10 +139,6 @@ public class ProductDaoImpl implements ProductDao {
         return product;
     }
 
-    @Override
-    public void delete(ProductEntity entity) {
-
-    }
 
     @Override
     public boolean deleteById(Integer id) {

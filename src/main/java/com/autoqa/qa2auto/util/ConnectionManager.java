@@ -1,5 +1,7 @@
 package com.autoqa.qa2auto.util;
 
+import lombok.experimental.UtilityClass;
+
 import java.lang.reflect.Proxy;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +11,8 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-public final class ConnectionManager {
+@UtilityClass
+public class ConnectionManager {
 
     private static final String URL_KEY = "db.url";
     private static final String USERNAME_KEY = "db.username";
@@ -24,10 +27,12 @@ public final class ConnectionManager {
         initConnectionPool();
     }
 
-    private ConnectionManager() {
-    }
-
     private static void initConnectionPool() {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("PostgreSQL driver not found", e);
+        }
         var poolSize = PropertiesUtil.get(POOL_SIZE_KEY);
         var size = poolSize == null ? DEFAULT_POOL_SIZE : Integer.parseInt(poolSize);
         pool = new ArrayBlockingQueue<>(size);
