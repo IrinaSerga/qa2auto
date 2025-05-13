@@ -3,6 +3,7 @@ package com.autoqa.qa2auto.service.impl;
 import com.autoqa.qa2auto.dao.SubsystemDao;
 import com.autoqa.qa2auto.dao.impl.SubsystemDaoImpl;
 import com.autoqa.qa2auto.dto.SubsystemDto;
+import com.autoqa.qa2auto.entity.SubsystemEntity;
 import com.autoqa.qa2auto.exception.serviceException.SubsystemServiceException;
 import com.autoqa.qa2auto.mapper.SubsystemMapper;
 import com.autoqa.qa2auto.mapper.impl.SubsystemMapperImpl;
@@ -76,4 +77,15 @@ public class SubsystemServiceImpl implements SubsystemService {
         }
     }
 
+    @Override
+    public List<SubsystemDto> findByProductId(Long productId) {
+        try {
+            List<SubsystemEntity> entities = subsystemDao.findByProductId(productId);
+            return entities.stream()
+                    .map(subsystemMapper::toDto)
+                    .toList();
+        } catch (Exception e) {
+            throw new SubsystemServiceException("Failed to find subsystems by productId: " + productId, e);
+        }
+    }
 }
