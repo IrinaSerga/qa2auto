@@ -11,4 +11,5 @@ public interface SubsystemService {
     SubsystemDto save(SubsystemDto dto);
     SubsystemDto update(SubsystemDto dto);
     boolean deleteById(Integer id);
+    List<SubsystemDto> findByProductId(Long productId);
 }

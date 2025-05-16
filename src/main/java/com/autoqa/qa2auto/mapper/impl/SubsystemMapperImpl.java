@@ -21,12 +21,14 @@ public class SubsystemMapperImpl implements SubsystemMapper {
 
     @Override
     public SubsystemDto toDto(SubsystemEntity entity) {
-        return SubsystemDto
-                .builder()
+        return SubsystemDto.builder()
                 .id(entity.getId())
                 .name(entity.getName())
                 .productId(entity.getProductId().getId())
                 .testGroupId(entity.getTestGroupId().getId())
+                .testGroupName(entity.getTestGroupId().getName()) // берётся из связанного объекта
+             //   .priorityId(entity.getPriorityId().getId())
+              //  .priorityName(entity.getPriorityId().getName())
                 .build();
     }
 
@@ -40,6 +42,8 @@ public class SubsystemMapperImpl implements SubsystemMapper {
                 .testGroupId(TestGroupEntity.builder().id(dto.getTestGroupId()).build())
                 .build();
     }
+
+
 }
 
 

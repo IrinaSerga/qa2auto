@@ -16,6 +16,8 @@ import java.util.Optional;
 
 public class SubsystemDaoImpl implements SubsystemDao {
 
+    private static SubsystemDaoImpl instance;
+
     private static final String ID = "id";
     private static final String NAME = "name";
     private static final String PRODUCT_ID = "product_id";
@@ -26,8 +28,16 @@ public class SubsystemDaoImpl implements SubsystemDao {
             FROM subsystem
             """;
 
-    private static final String FIND_BY_ID_SQL = FIND_ALL_SQL + """
-            WHERE id = ?
+    private static final String FIND_BY_PRODUCT_ID_SQL = """
+            SELECT s.id,
+                   s.name,
+                   sp.name AS priority_name,
+                   tg.name AS test_group_name
+            FROM subsystem s
+            JOIN subsystem_priority sp ON s.priority_id = sp.id
+            JOIN test_group tg ON s.test_group_id = tg.id
+            WHERE s.product_id = ?
+            ORDER BY sp.id
             """;
 
     private static final String SAVE_SQL = """
@@ -46,7 +56,6 @@ public class SubsystemDaoImpl implements SubsystemDao {
             WHERE id = ?
             """;
 
-    private static SubsystemDaoImpl instance;
 
     private SubsystemDaoImpl() {
         super();
@@ -61,21 +70,27 @@ public class SubsystemDaoImpl implements SubsystemDao {
 
     @Override
     public Optional<SubsystemEntity> findById(Integer id) {
-        try (var connection = ConnectionManager.get();
-             var preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
+        return Optional.empty();
+    }
 
-            preparedStatement.setInt(1, id);
+    public List<SubsystemEntity> findByProductId(Long productId) {
+        try (var connection = ConnectionManager.get();
+             var preparedStatement = connection.prepareStatement(FIND_BY_PRODUCT_ID_SQL)) {
+
+            preparedStatement.setLong(1, productId);
             var resultSet = preparedStatement.executeQuery();
-            SubsystemEntity subsystem = null;
-            if (resultSet.next()) {
-                subsystem = buildSubsystem(resultSet);
+
+            List<SubsystemEntity> subsystems = new ArrayList<>();
+            while (resultSet.next()) {
+                subsystems.add(buildSubsystem(resultSet));
             }
-            return Optional.ofNullable(subsystem);
+            return subsystems;
 
         } catch (SQLException e) {
-            throw new SubsystemDaoException("Can't find subsystem by id", e);
+            throw new SubsystemDaoException("Can't find subsystems by productId", e);
         }
     }
+
 
     @Override
     public List<SubsystemEntity> findAll() {

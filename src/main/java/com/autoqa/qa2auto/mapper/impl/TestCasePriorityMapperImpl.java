@@ -15,7 +15,8 @@ public class TestCasePriorityMapperImpl implements TestCasePriorityMapper {
     public static TestCasePriorityMapper getInstance() { if (instance == null) {
         instance = new TestCasePriorityMapperImpl();
     }
-        return instance;}
+        return instance;
+    }
     @Override
     public TestCasePriorityDto toDto(TestCasePriorityEntity entity) {
         return  TestCasePriorityDto

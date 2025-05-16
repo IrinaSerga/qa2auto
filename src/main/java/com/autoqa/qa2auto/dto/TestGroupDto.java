@@ -2,9 +2,8 @@ package com.autoqa.qa2auto.dto;
 
 
 import lombok.Builder;
-import lombok.Value;
-
-@Value
+import lombok.Data;
+@Data
 @Builder
 public class TestGroupDto {
     Integer id;

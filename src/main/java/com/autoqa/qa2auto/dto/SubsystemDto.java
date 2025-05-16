@@ -9,5 +9,10 @@ public class SubsystemDto {
     Integer id;
     Long productId;
     String name;
+
     Integer testGroupId;
+    String testGroupName;
+
+    Integer priorityId;
+    String priorityName;
 }

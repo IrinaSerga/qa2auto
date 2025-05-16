@@ -249,6 +249,18 @@ CREATE TABLE users
     group_id INTEGER REFERENCES test_group (id)
 );
 
+INSERT INTO users (email, username, group_id) VALUES
+                                                  ('alice@example.com', 'alice', 1),
+                                                  ('bob@example.com', 'bob_the_builder', 2),
+                                                  ('charlie@example.com', 'charlie123', 3),
+                                                  ('diana@example.com', 'diana.dev', 4),
+                                                  ('evan@example.com', 'evan_g', 5),
+                                                  ('fiona@example.com', 'fiona99', 2),
+                                                  ('george@example.com', 'george_code', 1),
+                                                  ('hannah@example.com', 'hannah.h', 3),
+                                                  ('ivan@example.com', 'ivan_qa', 4),
+                                                  ('julia@example.com', 'julia_js', 5);
+
 
 
 

@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 @Builder
 public class TestCaseActionEntity {
-    private int id;
+    private Long id;
     private TestCaseEntity testCaseId;
     private TestCaseActionEntity actionId;
     private int stepOrder;
