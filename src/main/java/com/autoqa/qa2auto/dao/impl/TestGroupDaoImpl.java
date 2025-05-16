@@ -5,14 +5,17 @@ import com.autoqa.qa2auto.entity.TestGroupEntity;
 import com.autoqa.qa2auto.exception.daoException.TestGroupDaoException;
 import com.autoqa.qa2auto.util.ConnectionManager;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class TestGroupDaoImpl implements TestGroupDao {
 
 
     private static TestGroupDaoImpl instance;
-
+    private static final String ID = "id";
+    private static final String NAME = "name";
     private static final String FIND_ALL_SQL = """
             SELECT id, name FROM test_group
             """;
@@ -38,8 +41,8 @@ public class TestGroupDaoImpl implements TestGroupDao {
             TestGroupEntity entity = null;
             if (rs.next()) {
                 entity = TestGroupEntity.builder()
-                        .id(rs.getInt("id"))
-                        .name(rs.getString("name"))
+                        .id(rs.getInt(ID))
+                        .name(rs.getString(NAME))
                         .build();
             }
             return Optional.ofNullable(entity);
@@ -56,8 +59,8 @@ public class TestGroupDaoImpl implements TestGroupDao {
             List<TestGroupEntity> result = new ArrayList<>();
             while (rs.next()) {
                 result.add(TestGroupEntity.builder()
-                        .id(rs.getInt("id"))
-                        .name(rs.getString("name"))
+                        .id(rs.getInt(ID))
+                        .name(rs.getString(NAME))
                         .build());
             }
             return result;

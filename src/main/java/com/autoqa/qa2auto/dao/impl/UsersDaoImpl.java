@@ -6,8 +6,12 @@ import com.autoqa.qa2auto.entity.UsersEntity;
 import com.autoqa.qa2auto.exception.daoException.UsersDaoException;
 import com.autoqa.qa2auto.util.ConnectionManager;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 
 public class UsersDaoImpl implements UsersDao {
 
@@ -41,9 +45,10 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    public Optional<UsersEntity> findById(Long id) {
+    public Optional<UsersEntity> findById(Integer id) {
         return findAll().stream().filter(u -> u.getId().equals(id)).findFirst();
     }
+
 
     @Override
     public List<UsersEntity> findAll() {
@@ -89,7 +94,13 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    public UsersEntity update(UsersEntity entity) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteById(Integer id) {
         return false;
     }
+
 }

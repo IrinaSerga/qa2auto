@@ -10,6 +10,6 @@ import lombok.*;
 @ToString
 @Builder
 public class TestGroupEntity {
-    Integer id;
-    String name;
+    private Integer id;
+    private String name;
 }

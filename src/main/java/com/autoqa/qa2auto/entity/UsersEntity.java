@@ -8,9 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UsersEntity {
-    Integer id;
-    String username;
-    String email;
-    String password;
-    TestGroupEntity testGroupId;
+    private Integer id;
+    private String username;
+    private String email;
+    private String password;
+    private TestGroupEntity testGroupId;
 }

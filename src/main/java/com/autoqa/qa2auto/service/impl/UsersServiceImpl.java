@@ -51,13 +51,14 @@ public class UsersServiceImpl implements UsersService {
     public Optional<UsersDto> findByUsernameAndEmail(String username, String email) {
         try {
             return usersDao.findAll().stream()
-                    .filter(u -> u.getUsername().equals(username) && u.getEmail().equals(email))
+                    .filter(user -> user.getUsername().equals(username) && user.getEmail().equals(email))
                     .map(userMapper::toDto)
                     .findFirst();
         } catch (Exception e) {
             throw new UsersServiceException("Failed to find user by username and email", e);
         }
     }
+
 
     public boolean checkPassword(UsersDto dto, String rawPassword) {
         if (dto == null || rawPassword == null) return false;
