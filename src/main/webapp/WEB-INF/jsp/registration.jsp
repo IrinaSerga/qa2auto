@@ -43,14 +43,34 @@
                         <label for="testGroupId" class="form-label">Test Group:</label>
                         <select class="form-select" name="testGroupId" id="testGroupId" required>
                             <option value="" disabled selected>Select a group</option>
-                            <c:forEach var="group" items="${testGroups}">
+                            <c:forEach var="group" items="${requestScope.testGroups}">
                                 <option value="${group.id}">${group.name}</option>
                             </c:forEach>
                         </select>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Role:</label>
+                        <select class="form-select" name="role" id="role" required>
+                            <option value="" disabled selected>Select a role</option>
+                            <c:forEach var="role" items="${requestScope.roles}">
+                                <option value="${role}">${role}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+
+
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Register</button>
+                        <c:if test="${not empty requestScope.errors}">
+                            <div style="color: red">
+                                <c:forEach var="error" items="${requestScope.errors}">
+                                    <span>${error.message}</span>
+                                </c:forEach>
+                            </div>
+
+                        </c:if>
+
                     </div>
 
                 </form>

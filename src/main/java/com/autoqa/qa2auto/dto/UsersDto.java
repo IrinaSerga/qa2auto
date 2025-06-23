@@ -12,6 +12,6 @@ public class UsersDto {
     String password;
     Integer testGroupId;
 
-
     String testGroupName;
+    String role;
 }

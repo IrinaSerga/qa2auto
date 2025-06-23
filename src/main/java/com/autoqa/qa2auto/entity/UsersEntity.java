@@ -13,4 +13,5 @@ public class UsersEntity {
     private String email;
     private String password;
     private TestGroupEntity testGroupId;
+    private Role role;
 }

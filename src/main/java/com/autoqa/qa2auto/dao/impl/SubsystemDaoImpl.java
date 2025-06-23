@@ -69,11 +69,7 @@ public class SubsystemDaoImpl implements SubsystemDao {
     }
 
     @Override
-    public Optional<SubsystemEntity> findById(Integer id) {
-        return Optional.empty();
-    }
-
-    public List<SubsystemEntity> findByProductId(Long productId) {
+    public List<SubsystemEntity> findAllByProductId(Long productId) {
         try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(FIND_BY_PRODUCT_ID_SQL)) {
 
@@ -91,6 +87,11 @@ public class SubsystemDaoImpl implements SubsystemDao {
         }
     }
 
+
+    @Override
+    public Optional<SubsystemEntity> findById(Integer id) {
+        return Optional.empty();
+    }
 
     @Override
     public List<SubsystemEntity> findAll() {
@@ -177,5 +178,11 @@ public class SubsystemDaoImpl implements SubsystemDao {
         } catch (SQLException e) {
             throw new SubsystemDaoException("Can't build subsystem", e);
         }
+    }
+
+
+    @Override
+    public List<SubsystemEntity> findAllByProductId(Integer productId) {
+        return List.of();
     }
 }

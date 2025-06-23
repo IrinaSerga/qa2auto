@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UsersDao extends BaseDao<Integer, UsersEntity> {
-    Optional<UsersEntity> findById(Integer id);
+    Optional<UsersEntity> findByEmail(String email);
+    Optional<UsersEntity> findByProductId(Integer id);
     List<UsersEntity> findAll();
     UsersEntity save(UsersEntity user);
     boolean deleteById(Integer id);

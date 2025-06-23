@@ -43,7 +43,7 @@ public class ActionDirectoryDaoImpl implements ActionDirectoryDao {
 
 
     @Override
-    public Optional<ActionDirectoryEntity> findById(Integer id) {
+    public Optional<ActionDirectoryEntity> findByProductId(Integer id) {
         try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
             preparedStatement.setInt(1, id);
@@ -57,6 +57,11 @@ public class ActionDirectoryDaoImpl implements ActionDirectoryDao {
         } catch (SQLException e) {
             throw new ActionDirectoryDaoException("Can`t find actionDirectory by id ", e);
         }
+    }
+
+    @Override
+    public Optional<ActionDirectoryEntity> findById(Integer id) {
+        return Optional.empty();
     }
 
     @Override

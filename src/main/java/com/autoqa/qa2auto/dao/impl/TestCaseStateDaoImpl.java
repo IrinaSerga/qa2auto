@@ -44,6 +44,11 @@ public class TestCaseStateDaoImpl implements TestCaseStateDao {
     }
 
     @Override
+    public Optional<TestCaseStateEntity> findById(Integer id) {
+        return Optional.empty();
+    }
+
+    @Override
     public List<TestCaseStateEntity> findAll() {
         try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
@@ -61,7 +66,7 @@ public class TestCaseStateDaoImpl implements TestCaseStateDao {
     }
 
     @Override
-    public Optional<TestCaseStateEntity> findById(Integer id) {
+    public Optional<TestCaseStateEntity> findByProductId(Integer id) {
         try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
             preparedStatement.setInt(1, id);

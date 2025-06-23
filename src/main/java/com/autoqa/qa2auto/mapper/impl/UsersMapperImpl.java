@@ -1,6 +1,7 @@
 package com.autoqa.qa2auto.mapper.impl;
 
 import com.autoqa.qa2auto.dto.UsersDto;
+import com.autoqa.qa2auto.entity.Role;
 import com.autoqa.qa2auto.entity.TestGroupEntity;
 import com.autoqa.qa2auto.entity.UsersEntity;
 import com.autoqa.qa2auto.mapper.UsersMapper;
@@ -24,6 +25,7 @@ public class UsersMapperImpl implements UsersMapper {
                 .password(entity.getPassword())
                 .testGroupId(entity.getTestGroupId().getId())
                 .testGroupName(entity.getTestGroupId().getName())
+                .role(String.valueOf(entity.getRole()))
                 .build();
     }
 
@@ -35,6 +37,9 @@ public class UsersMapperImpl implements UsersMapper {
                 .email(dto.getEmail())
                 .password(dto.getPassword())
                 .testGroupId(TestGroupEntity.builder().id(dto.getTestGroupId()).name(dto.getTestGroupName()).build())
+                .role(Role.valueOf(dto.getRole()))
                 .build();
     }
+
+
 }

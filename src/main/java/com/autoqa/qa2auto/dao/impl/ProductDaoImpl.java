@@ -60,7 +60,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     // Optional -  потому что может вернуть NULL
-    public Optional<ProductEntity> findById(Integer id) {
+    public Optional<ProductEntity> findById (Integer id) {
         try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
             preparedStatement.setLong(1, id);

@@ -53,8 +53,8 @@ public class SubsystemPriorityDaoImpl implements SubsystemPriorityDao {
         return instance;
     }
 
-    @Override
-    public Optional<SubsystemPriorityEntity> findById(Integer id) {
+
+    public Optional<SubsystemPriorityEntity> findByProductId(Integer id) {
         try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
 
@@ -69,6 +69,11 @@ public class SubsystemPriorityDaoImpl implements SubsystemPriorityDao {
         } catch (SQLException e) {
             throw new SubsystemPriorityDaoException("Can't find subsystem priority by id", e);
         }
+    }
+
+    @Override
+    public Optional<SubsystemPriorityEntity> findById(Integer id) {
+        return Optional.empty();
     }
 
     @Override

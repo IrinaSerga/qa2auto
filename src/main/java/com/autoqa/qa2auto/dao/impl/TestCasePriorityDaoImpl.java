@@ -53,7 +53,7 @@ private static TestCasePriorityDaoImpl instance;
         return instance;
     }
     @Override
-    public Optional<TestCasePriorityEntity> findById(Integer id) {
+    public Optional<TestCasePriorityEntity> findByProductId(Integer id) {
         try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
             preparedStatement.setInt(1, id);
@@ -67,6 +67,11 @@ private static TestCasePriorityDaoImpl instance;
         } catch (SQLException e) {
             throw new TestCasePriorityDaoException("Can`t find testCasePriority by id ", e);
         }
+    }
+
+    @Override
+    public Optional<TestCasePriorityEntity> findById(Integer id) {
+        return Optional.empty();
     }
 
     @Override

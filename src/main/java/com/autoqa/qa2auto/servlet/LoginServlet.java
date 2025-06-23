@@ -25,15 +25,15 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        Optional<UsersDto> user = usersService.findByUsernameAndEmail(username, email);
+        Optional<UsersDto> user = usersService.findByEmail(email);
 
         if (user.isPresent() && usersService.checkPassword(user.get(), password)) {
             req.getSession().setAttribute("user", user.get());
-            resp.sendRedirect(req.getContextPath() + "/product");
+            req.getSession().setAttribute("userRole", user.get().getRole()); // для дальнейшего чека прав
+            resp.sendRedirect("/product");
         } else {
             req.setAttribute("error", "Неверное имя пользователя, email или пароль");
             req.getRequestDispatcher(JspHelper.getPath("login")).forward(req, resp);

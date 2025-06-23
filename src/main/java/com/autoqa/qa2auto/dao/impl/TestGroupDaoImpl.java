@@ -32,7 +32,7 @@ public class TestGroupDaoImpl implements TestGroupDao {
 
 
     @Override
-    public Optional<TestGroupEntity> findById(Integer id) {
+    public Optional<TestGroupEntity> findByProductId(Integer id) {
         try (var connection = ConnectionManager.get();
              var ps = connection.prepareStatement(FIND_BY_ID_SQL)) {
 
@@ -49,6 +49,11 @@ public class TestGroupDaoImpl implements TestGroupDao {
         } catch (SQLException e) {
             throw new TestGroupDaoException("Failed to find test group by id", e);
         }
+    }
+
+    @Override
+    public Optional<TestGroupEntity> findById(Integer id) {
+        return Optional.empty();
     }
 
     @Override

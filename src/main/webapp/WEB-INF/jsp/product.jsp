@@ -52,27 +52,29 @@
                             <c:forEach var="subsystem" items="${product.subsystems}">
                                 <li class="list-group-item">
                                     <strong>${subsystem.name}</strong>
-                                    <c:if test="${not empty subsystem.tests}">
-                                        <ul class="mt-2">
-                                            <c:forEach var="test" items="${subsystem.tests}">
-                                                <li style="margin-left: 20px;">
-                                                    🔹 ${test.name}
-                                                    <small class="text-muted">[Группа: ${test.group},
-                                                        Приоритет: ${test.priority}]</small>
-                                                </li>
-                                            </c:forEach>
-                                        </ul>
-                                    </c:if>
+                                <%--
+                                <c:if test="${not empty subsystem.tests}">
+                                    <ul class="mt-2">
+                                        <c:forEach var="test" items="${subsystem.tests}">
+                                            <li style="margin-left: 20px;">
+                                                🔹 ${test.name}
+                                                <small class="text-muted">[Группа: ${test.group},
+                                                    Приоритет: ${test.priority}]</small>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </c:if>
+                                --%>
 
-                                </li>
-                            </c:forEach>
+                            </li>
+                        </c:forEach>
 
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
             </div>
-        </c:forEach>
-    </div>
+        </div>
+    </c:forEach>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -10,6 +10,7 @@ import com.autoqa.qa2auto.mapper.impl.SubsystemMapperImpl;
 import com.autoqa.qa2auto.service.SubsystemService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SubsystemServiceImpl implements SubsystemService {
     private static SubsystemServiceImpl instance;
@@ -27,12 +28,16 @@ public class SubsystemServiceImpl implements SubsystemService {
         return instance;
     }
 
+
+    public List<SubsystemDto> findAllByProductId(Integer id) {
+        return subsystemDao.findAllByProductId(id).stream()
+                .map(subsystemMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     @Override
     public SubsystemDto findById(Integer id) {
-        return subsystemDao.findById(id)
-                .map(subsystemMapper::toDto)
-                .orElseThrow(() ->
-                        new SubsystemServiceException("Subsystem not found by Id: " + id));
+        return null;
     }
 
     @Override
@@ -78,14 +83,19 @@ public class SubsystemServiceImpl implements SubsystemService {
     }
 
     @Override
-    public List<SubsystemDto> findByProductId(Long productId) {
+    public List<SubsystemDto> findByProductId(Integer productId) {
         try {
-            List<SubsystemEntity> entities = subsystemDao.findByProductId(productId);
+            List<SubsystemEntity> entities = subsystemDao.findAllByProductId(productId);
             return entities.stream()
                     .map(subsystemMapper::toDto)
                     .toList();
         } catch (Exception e) {
             throw new SubsystemServiceException("Failed to find subsystems by productId: " + productId, e);
         }
+    }
+
+    @Override
+    public List<SubsystemEntity> findAllByProductId(Long productId) {
+        return List.of();
     }
 }
